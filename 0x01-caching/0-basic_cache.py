@@ -12,9 +12,6 @@ class BasicCache(BaseCaching):
        and is a caching system
     '''
 
-    def __init__(self):
-        super().__init__()
-
     def put(self, key, item):
         '''assign to the dictionary `self.cache_data` the
            `item` value for the key `key`
