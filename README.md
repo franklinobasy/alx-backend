@@ -4,4 +4,6 @@
 ![Pep8 style](https://img.shields.io/badge/PEP8-style%20guide-purple?style=round-square)
 ![Latest commit](https://img.shields.io/github/last-commit/franklinobasy/alx-backend/master?style=round-square)
 
-This repo contains projects for learning backend development concepts.
+1. [0x00-pagination](./0x00-pagination/)
+
+2. [0x01-caching](./0x01-caching/)
