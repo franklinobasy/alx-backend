@@ -215,3 +215,74 @@ guillaume@ubuntu:~/0x01$
 ```
 
 solution - [1-fifo_cache.py](./1-fifo_cache.py)
+
+### 2. LIFO Caching
+
+Create a class `LIFOCache` that inherits from `BaseCaching` and is a caching system:
+
++ You must use `self.cache_data` - dictionary from the parent class `BaseCaching`
++ You can overload `def __init__(self):` but don’t forget to call the parent init: `super().__init__()`
++ `def put(self, key, item):`
+    + Must assign to the dictionary `self.cache_data` the `item` value for the key `key`.
+    + If `key` or `item` is `None`, this method should not do anything.
+    + If the number of items in `self.cache_data` is higher that `BaseCaching.MAX_ITEMS`:
+        + you must discard the last item put in cache (LIFO algorithm)
+        + you must print DISCARD: with the key discarded and following by a new line
++ def get(self, key):
+    + Must return the value in `self.cache_data` linked to `key`.
+    + If `key` is `None` or if the `key` doesn’t exist in `self.cache_data`, return `None`.
+
+```
+guillaume@ubuntu:~/0x01$ cat 2-main.py
+#!/usr/bin/python3
+""" 2-main """
+LIFOCache = __import__('2-lifo_cache').LIFOCache
+
+my_cache = LIFOCache()
+my_cache.put("A", "Hello")
+my_cache.put("B", "World")
+my_cache.put("C", "Holberton")
+my_cache.put("D", "School")
+my_cache.print_cache()
+my_cache.put("E", "Battery")
+my_cache.print_cache()
+my_cache.put("C", "Street")
+my_cache.print_cache()
+my_cache.put("F", "Mission")
+my_cache.print_cache()
+my_cache.put("G", "San Francisco")
+my_cache.print_cache()
+
+guillaume@ubuntu:~/0x01$ ./2-main.py
+Current cache:
+A: Hello
+B: World
+C: Holberton
+D: School
+DISCARD: D
+Current cache:
+A: Hello
+B: World
+C: Holberton
+E: Battery
+Current cache:
+A: Hello
+B: World
+C: Street
+E: Battery
+DISCARD: C
+Current cache:
+A: Hello
+B: World
+E: Battery
+F: Mission
+DISCARD: F
+Current cache:
+A: Hello
+B: World
+E: Battery
+G: San Francisco
+guillaume@ubuntu:~/0x01$
+```
+
+solution - [2-lifo_cache.py](./2-lifo_cache.py)
