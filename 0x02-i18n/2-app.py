@@ -21,6 +21,16 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 
+@app.route('/')
+def index() -> str:
+    '''default route
+
+    Returns:
+        html: homepage
+    '''
+    return render_template("2-index.html",)
+
+
 @babel.localselector
 def get_locale() -> str:
     """Retrieves the locale for a web page.
@@ -33,15 +43,5 @@ def get_locale() -> str:
         )
 
 
-@app.route('/')
-def index() -> str:
-    '''default route
-
-    Returns:
-        html: homepage
-    '''
-    return render_template("2-index.html",)
-
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
