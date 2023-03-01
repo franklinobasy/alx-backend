@@ -22,14 +22,14 @@ babel = Babel(app)
 
 
 @babel.localselector
-def get_locale():
+def get_locale() -> str:
     """Retrieves the locale for a web page.
     """
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
 @app.route('/')
-def index():
+def index() -> str:
     '''default route'''
     return render_template("2-index.html",)
 
